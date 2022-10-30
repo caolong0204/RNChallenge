@@ -2,6 +2,7 @@ require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 platform :ios, '11.0'
+use_frameworks! :linkage => :static
 install! 'cocoapods', :deterministic_uuids => false
 
 target 'DemoAnimatedApp' do
@@ -18,7 +19,11 @@ target 'DemoAnimatedApp' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
-
+  #video no cache
+  # pod 'react-native-video', :path => '../node_modules/react-native-video/react-native-video.podspec'
+  
+  #video with cache
+  #pod 'react-native-video/VideoCaching', :path => '../node_modules/react-native-video/react-native-video.podspec'
   target 'DemoAnimatedAppTests' do
     inherit! :complete
     # Pods for testing
