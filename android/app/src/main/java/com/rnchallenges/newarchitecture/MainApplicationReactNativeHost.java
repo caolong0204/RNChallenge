@@ -1,4 +1,4 @@
-package com.demoanimatedapp.newarchitecture;
+package com.rnchallenges.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -16,12 +16,12 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.UIManager;
 import com.facebook.react.fabric.ComponentFactory;
 import com.facebook.react.fabric.CoreComponentsRegistry;
-import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
+import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.demoanimatedapp.BuildConfig;
-import com.demoanimatedapp.newarchitecture.components.MainComponentsRegistry;
-import com.demoanimatedapp.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.rnchallenges.BuildConfig;
+import com.rnchallenges.newarchitecture.components.MainComponentsRegistry;
+import com.rnchallenges.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,7 +105,7 @@ public class MainApplicationReactNativeHost extends ReactNativeHost {
                 return new FabricJSIModuleProvider(
                     reactApplicationContext,
                     componentFactory,
-                    new EmptyReactNativeConfig(),
+                    ReactNativeConfig.DEFAULT_CONFIG,
                     viewManagerRegistry);
               }
             });

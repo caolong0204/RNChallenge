@@ -10,30 +10,24 @@
 
 import React from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
-import ChatScreen from './ChatScreen';
-// import DragOnly from './DragOnly';
+// import ChatScreen from './ChatScreen';
+import DragOnly from './DragOnly';
 // import LongPressToDrag from './LongPressToDrag';
 // import VibrateView from './VibrateView';
 
 const App = () => {
   return (
-    <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
-      {/* <LongPressToDrag />
+    <SafeAreaView style={styles.container}>
       <DragOnly />
+      {/* <LongPressToDrag />
       <VibrateView/> */}
-      <ChatScreen />
+      {/* <ChatScreen /> */}
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  ball: {
-    width: 100,
-    height: 100,
-    borderRadius: 100,
-    backgroundColor: 'blue',
-    alignSelf: 'center',
-  },
+  container: {backgroundColor: '#fff', flex: 1},
 });
 
 export default App;
