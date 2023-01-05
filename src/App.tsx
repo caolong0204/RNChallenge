@@ -1,33 +1,27 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
-// import ChatScreen from './ChatScreen';
-import DragOnly from './DragOnly';
-// import LongPressToDrag from './LongPressToDrag';
-// import VibrateView from './VibrateView';
+import {StyleSheet} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+// import { initializeMMKVFlipper } from 'react-native-mmkv-flipper-plugin';
+// import { AppStorage } from 'utils/storage';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import AppRoutes from './Navigators/appRoutes';
+// if (__DEV__) {
+//   initializeMMKVFlipper({ default: AppStorage });
+// }
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <DragOnly />
-      {/* <LongPressToDrag />
-      <VibrateView/> */}
-      {/* <ChatScreen /> */}
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <GestureHandlerRootView style={styles.root}>
+        <AppRoutes />
+      </GestureHandlerRootView>
+    </SafeAreaProvider>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {backgroundColor: '#fff', flex: 1},
-});
-
 export default App;
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
+});
