@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {ImageAssets} from '../../Assets/ImageAssets';
 import {SCREEN_WIDTH} from '../../Common/constant';
+import AnimatedHeart from './animatedHeaert';
 
 const ReactToMessage = () => {
   const [heartCount, setHeartCount] = useState(0);
@@ -29,6 +30,7 @@ const ReactToMessage = () => {
     }
     setHeartCount(preValue => preValue + 1);
 
+    setHearts([...hearts, {id: getUniqueId()}]);
     heartTimeout.current = setTimeout(() => {
       Animated.spring(countAnimatedValue, {
         toValue: 0,
@@ -43,6 +45,10 @@ const ReactToMessage = () => {
       useNativeDriver: true,
     }).start();
   };
+  function getUniqueId() {
+    return Math.floor(Math.random() * Date.now()).toString();
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.messageContainer}>
@@ -85,6 +91,13 @@ const ReactToMessage = () => {
           ]}>
           <Text style={styles.loveCountText}>{heartCount}</Text>
         </Animated.View>
+        {hearts.map(({id}) => (
+          <AnimatedHeart
+            key={id}
+            id={id}
+            onCompleteAnimation={handleCompleteAnimation}
+          />
+        ))}
       </View>
     </SafeAreaView>
   );

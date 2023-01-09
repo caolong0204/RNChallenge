@@ -2,7 +2,7 @@ import {NativeStackScreenProps as RNStackScreenProps} from '@react-navigation/na
 
 export enum APP_SCREEN {
   UN_AUTHORIZE = 'UN_AUTHORIZE',
-  REACT_TO_MESSAGE = 'CHALLENGE_FIRST',
+  REACT_TO_MESSAGE = 'REACT_TO_MESSAGE',
 
   AUTHORIZE = 'AUTHORIZE',
   CHALLENGE_TAB = 'CHALLENGE_TAB',
