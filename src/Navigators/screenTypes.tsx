@@ -3,7 +3,7 @@ import {NativeStackScreenProps as RNStackScreenProps} from '@react-navigation/na
 export enum APP_SCREEN {
   UN_AUTHORIZE = 'UN_AUTHORIZE',
   REACT_TO_MESSAGE = 'REACT_TO_MESSAGE',
-
+  PROGRESS_BAR = 'ProgressBar',
   AUTHORIZE = 'AUTHORIZE',
   CHALLENGE_TAB = 'CHALLENGE_TAB',
   HOME_SCREEN = 'HOME_SCREEN',
@@ -12,6 +12,7 @@ export enum APP_SCREEN {
 }
 export type UnAuthorizeParamsList = {
   [APP_SCREEN.REACT_TO_MESSAGE]: undefined;
+  [APP_SCREEN.PROGRESS_BAR]: undefined;
 };
 export type AuthorizeParamsList = {
   //3 Màn chính trong bottom Tab
