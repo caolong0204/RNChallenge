@@ -1,6 +1,7 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
 import LoadingScreen from '../Container/LoadingScreen';
+import MomoScreen from '../Container/MomoScreen';
 import ProgressBarScreen from '../Container/ProgressBarScreen';
 import ReactToMessage from '../Container/ReactToMessage';
 import {APP_SCREEN, RootNativeStackParamList} from './screenTypes';
@@ -13,7 +14,7 @@ const UnAuthenStack = () => {
         animationTypeForReplace: 'pop',
         headerShown: false,
       }}
-      initialRouteName={APP_SCREEN.LOADING_SCREEN}>
+      initialRouteName={APP_SCREEN.MOMO_SCREEN}>
       <Stack.Screen
         name={APP_SCREEN.REACT_TO_MESSAGE}
         component={ReactToMessage}
@@ -26,6 +27,7 @@ const UnAuthenStack = () => {
         name={APP_SCREEN.LOADING_SCREEN}
         component={LoadingScreen}
       />
+      <Stack.Screen name={APP_SCREEN.MOMO_SCREEN} component={MomoScreen} />
     </Stack.Navigator>
   );
 };

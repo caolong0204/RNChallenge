@@ -8,7 +8,7 @@ const LoadingScreen = () => {
   return (
     <Screen>
       <View style={styles.container}>
-        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+        <View style={styles.subView}>
           <Text>Loading</Text>
           <ThreeDots />
         </View>
@@ -21,4 +21,5 @@ export default LoadingScreen;
 
 const styles = StyleSheet.create({
   container: {justifyContent: 'center', flex: 1, paddingHorizontal: 20},
+  subView: {flexDirection: 'row', justifyContent: 'center'},
 });

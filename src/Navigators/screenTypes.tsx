@@ -10,6 +10,7 @@ export enum APP_SCREEN {
   ACCOUNT_SCREEN = 'ACCOUNT_SCREEN',
   POD_CAST_SCREEN = 'POD_CAST_SCREEN',
   LOADING_SCREEN = 'LOADING_SCREEN',
+  MOMO_SCREEN = 'MOMO_SCREEN',
 }
 export type UnAuthorizeParamsList = {
   [APP_SCREEN.REACT_TO_MESSAGE]: undefined;
@@ -22,6 +23,7 @@ export type AuthorizeParamsList = {
   [APP_SCREEN.ACCOUNT_SCREEN]: undefined;
   [APP_SCREEN.POD_CAST_SCREEN]: undefined;
   [APP_SCREEN.LOADING_SCREEN]: undefined;
+  [APP_SCREEN.MOMO_SCREEN]: undefined;
 };
 export type RootNativeStackParamList = {
   [APP_SCREEN.UN_AUTHORIZE]: undefined;
