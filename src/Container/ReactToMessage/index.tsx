@@ -7,8 +7,13 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Animated,
 } from 'react-native';
+import Animated, {
+  interpolate,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+} from 'react-native-reanimated';
 import {ImageAssets} from '../../Assets/ImageAssets';
 import {SCREEN_WIDTH} from '../../Common/constant';
 import AnimatedHeart from './animatedHeaert';
@@ -17,7 +22,7 @@ const ReactToMessage = () => {
   const [heartCount, setHeartCount] = useState(0);
   const [hearts, setHearts] = useState<{id: string}[]>([]);
   const heartTimeout = useRef<ReturnType<typeof setTimeout>>();
-  const countAnimatedValue = useRef(new Animated.Value(0)).current;
+  const countAnimatedValue = useSharedValue(0);
 
   const handleCompleteAnimation = useCallback((id: string) => {
     setHearts(oldHearts => {
@@ -32,23 +37,20 @@ const ReactToMessage = () => {
 
     setHearts([...hearts, {id: getUniqueId()}]);
     heartTimeout.current = setTimeout(() => {
-      Animated.spring(countAnimatedValue, {
-        toValue: 0,
-        speed: 48,
-        useNativeDriver: true,
-      }).start();
+      countAnimatedValue.value = withSpring(0, {velocity: 48});
     }, 500);
-
-    Animated.spring(countAnimatedValue, {
-      toValue: -50,
-      speed: 48,
-      useNativeDriver: true,
-    }).start();
+    countAnimatedValue.value = withSpring(-50, {velocity: 48});
   };
   function getUniqueId() {
     return Math.floor(Math.random() * Date.now()).toString();
   }
 
+  const countStyle = useAnimatedStyle(() => {
+    const scale = interpolate(countAnimatedValue.value, [-50, 0], [1, 0]);
+    return {
+      transform: [{translateY: countAnimatedValue.value}, {scale: scale}],
+    };
+  });
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.messageContainer}>
@@ -74,21 +76,7 @@ const ReactToMessage = () => {
             )}
           </View>
         </TouchableOpacity>
-        <Animated.View
-          style={[
-            styles.loveCountCircle,
-            {
-              transform: [
-                {translateY: countAnimatedValue},
-                {
-                  scale: countAnimatedValue.interpolate({
-                    inputRange: [-50, 0],
-                    outputRange: [1, 0],
-                  }),
-                },
-              ],
-            },
-          ]}>
+        <Animated.View style={[styles.loveCountCircle, countStyle]}>
           <Text style={styles.loveCountText}>{heartCount}</Text>
         </Animated.View>
         {hearts.map(({id}) => (

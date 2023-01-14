@@ -1,5 +1,13 @@
 import * as React from 'react';
-import {StyleSheet, Animated} from 'react-native';
+import {StyleSheet} from 'react-native';
+import Animated, {
+  Extrapolation,
+  interpolate,
+  runOnJS,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 import {ImageAssets} from '../../Assets/ImageAssets';
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../Common/constant';
 
@@ -8,7 +16,7 @@ type AnimatedHeartProps = {
   id: string;
 };
 const AnimatedHeart = ({id, onCompleteAnimation}: AnimatedHeartProps) => {
-  const animatedValueY = React.useRef(new Animated.Value(0)).current;
+  const animatedValueY = useSharedValue(0);
   const getRandomSignedNumber = () => (Math.random() < 0.5 ? -1 : 1);
   const getRandomXOutput = () => {
     const random = Math.random();
@@ -17,59 +25,60 @@ const AnimatedHeart = ({id, onCompleteAnimation}: AnimatedHeartProps) => {
       : random * 10;
   };
   const getRandomRotateOutput = () => {
-    return [getRandomSignedNumber() < 0 ? '-60deg' : '60deg', '0deg'];
+    return [getRandomSignedNumber() < 0 ? -60 : 60, 0];
   };
-  const randomX = React.useRef(getRandomXOutput()).current;
   const randomRotate = React.useRef(getRandomRotateOutput()).current;
+
   React.useEffect(() => {
-    Animated.timing(animatedValueY, {
-      toValue: -SCREEN_HEIGHT,
-      duration: 3000,
-      useNativeDriver: true,
-    }).start(() => {
-      onCompleteAnimation(id);
+    animatedValueY.value = withTiming(-SCREEN_HEIGHT, {duration: 3000}, () => {
+      runOnJS(onCompleteAnimation)(id);
     });
   }, [animatedValueY, id, onCompleteAnimation]);
+  const randomX = React.useRef(getRandomXOutput()).current;
+  const animatedStyles = useAnimatedStyle(() => {
+    const scale = interpolate(animatedValueY.value, [-50, 0], [1, 0.5], {
+      extrapolateLeft: Extrapolation.CLAMP,
+      extrapolateRight: Extrapolation.IDENTITY,
+    });
+    const translateX = interpolate(
+      animatedValueY.value,
+      [-SCREEN_HEIGHT, 0],
+      [randomX, 0],
+    );
+    const translateY = interpolate(
+      animatedValueY.value,
+      [-SCREEN_HEIGHT, -10, 0],
+      [-SCREEN_HEIGHT, -50, 0],
+    );
+
+    const rotate = interpolate(
+      animatedValueY.value,
+      [-SCREEN_HEIGHT, 0],
+      randomRotate,
+    );
+    const opacity = interpolate(
+      animatedValueY.value,
+      [-SCREEN_HEIGHT / 2, 0],
+      [0, 1],
+    );
+    return {
+      transform: [
+        {
+          scale: scale,
+        },
+        {translateY: translateY},
+        {translateX: translateX},
+        {
+          rotate: rotate + 'deg',
+        },
+      ],
+      opacity: opacity,
+    };
+  });
   return (
     <Animated.Image
       source={ImageAssets.heart}
-      style={[
-        styles.heartIcon,
-        {
-          transform: [
-            {
-              translateX: animatedValueY.interpolate({
-                inputRange: [-SCREEN_HEIGHT, 0],
-                outputRange: [randomX, 0],
-              }),
-            },
-            {
-              translateY: animatedValueY.interpolate({
-                inputRange: [-SCREEN_HEIGHT, -10, 0],
-                outputRange: [-SCREEN_HEIGHT, -50, 0],
-              }),
-            },
-            {
-              scale: animatedValueY.interpolate({
-                inputRange: [-50, 0],
-                outputRange: [1, 0.5],
-                extrapolate: 'clamp',
-              }),
-            },
-            {
-              rotate: animatedValueY.interpolate({
-                inputRange: [-SCREEN_HEIGHT, 0],
-                outputRange: randomRotate,
-                extrapolate: 'clamp',
-              }),
-            },
-          ],
-          opacity: animatedValueY.interpolate({
-            inputRange: [-SCREEN_HEIGHT / 2, 0],
-            outputRange: [0, 1],
-          }),
-        },
-      ]}
+      style={[styles.heartIcon, animatedStyles]}
     />
   );
 };
