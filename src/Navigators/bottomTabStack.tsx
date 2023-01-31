@@ -1,15 +1,15 @@
 import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import HomeScreen from '../Container/HomeScreen';
-import AccountScreen from '../Container/AccountScreen';
-import PodCastScreen from '../Container/PodCastScreen';
+import HomeScreen from '../Container/BottomTab/HomeScreen';
+import AccountScreen from '../Container/BottomTab/AccountScreen';
+import PodCastScreen from '../Container/BottomTab/PodCastScreen';
 
 const Tab = createBottomTabNavigator();
 
-const AuthenStack = () => {
+const BottomTabStack = () => {
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
+      screenOptions={() => ({
         headerShown: false,
       })}
       initialRouteName={BOTTOM_TAB_ROUTE.home}>
@@ -19,7 +19,7 @@ const AuthenStack = () => {
     </Tab.Navigator>
   );
 };
-export default AuthenStack;
+export default BottomTabStack;
 export const BOTTOM_TAB_ROUTE = {
   home: 'HOME',
   account: 'ACCOUNT',

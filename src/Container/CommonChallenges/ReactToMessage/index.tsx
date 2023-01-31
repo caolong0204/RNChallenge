@@ -14,8 +14,8 @@ import Animated, {
   useSharedValue,
   withSpring,
 } from 'react-native-reanimated';
-import {ImageAssets} from '../../Assets/ImageAssets';
-import {SCREEN_WIDTH} from '../../Common/constant';
+import {ImageAssets} from '../../../Assets/ImageAssets';
+import {SCREEN_WIDTH} from '../../../Common/constant';
 import AnimatedHeart from './animatedHeaert';
 
 const ReactToMessage = () => {

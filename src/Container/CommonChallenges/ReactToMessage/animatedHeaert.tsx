@@ -8,8 +8,8 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import {ImageAssets} from '../../Assets/ImageAssets';
-import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../Common/constant';
+import {ImageAssets} from '../../../Assets/ImageAssets';
+import {SCREEN_WIDTH, SCREEN_HEIGHT} from '../../../Common/constant';
 
 type AnimatedHeartProps = {
   onCompleteAnimation: (id: string) => void;

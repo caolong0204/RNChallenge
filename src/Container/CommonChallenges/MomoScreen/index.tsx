@@ -7,17 +7,17 @@ import {
   SafeAreaView,
   Image,
 } from 'react-native';
-import {SCREEN_HEIGHT} from '../../Common/constant';
 
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import AweaSomeIcon from 'react-native-vector-icons/FontAwesome5';
-import {ImageAssets} from '../../Assets/ImageAssets';
 import {TextInput} from 'react-native-gesture-handler';
 import Animated, {
   interpolate,
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
+import {ImageAssets} from '../../../Assets/ImageAssets';
+import {SCREEN_HEIGHT} from '../../../Common/constant';
 const MomoScreen = () => {
   const animatedValue = useSharedValue(0);
   const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);

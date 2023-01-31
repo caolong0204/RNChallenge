@@ -1,19 +1,16 @@
 import * as React from 'react';
 import {Text, StyleSheet, View} from 'react-native';
 
-import Screen from '../../Components/Screen';
-import ThreeDots from '../../Components/ThreeDot';
+import ThreeDots from '../../../Components/ThreeDot';
 
 const LoadingScreen = () => {
   return (
-    <Screen>
-      <View style={styles.container}>
-        <View style={styles.subView}>
-          <Text>Loading</Text>
-          <ThreeDots />
-        </View>
+    <View style={styles.container}>
+      <View style={styles.subView}>
+        <Text>Loading</Text>
+        <ThreeDots />
       </View>
-    </Screen>
+    </View>
   );
 };
 

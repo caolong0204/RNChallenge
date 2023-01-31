@@ -1,20 +1,25 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
-import LoadingScreen from '../Container/LoadingScreen';
-import MomoScreen from '../Container/MomoScreen';
-import ProgressBarScreen from '../Container/ProgressBarScreen';
-import ReactToMessage from '../Container/ReactToMessage';
+import GeneralScreen from '../Container/CommonChallenges/GeneralScreen';
+import LoadingScreen from '../Container/CommonChallenges/LoadingScreen';
+import MomoScreen from '../Container/CommonChallenges/MomoScreen';
+import ProgressBarScreen from '../Container/CommonChallenges/ProgressBarScreen';
+import ReactToMessage from '../Container/CommonChallenges/ReactToMessage';
 import {APP_SCREEN, RootNativeStackParamList} from './screenTypes';
 
 const Stack = createNativeStackNavigator<RootNativeStackParamList>();
-const UnAuthenStack = () => {
+const CommonChallengesStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
         animationTypeForReplace: 'pop',
-        headerShown: false,
+        headerShown: true,
       }}
-      initialRouteName={APP_SCREEN.MOMO_SCREEN}>
+      initialRouteName={APP_SCREEN.GENERAL_SCREEN}>
+      <Stack.Screen
+        name={APP_SCREEN.GENERAL_SCREEN}
+        component={GeneralScreen}
+      />
       <Stack.Screen
         name={APP_SCREEN.REACT_TO_MESSAGE}
         component={ReactToMessage}
@@ -32,4 +37,4 @@ const UnAuthenStack = () => {
   );
 };
 
-export default UnAuthenStack;
+export default CommonChallengesStack;

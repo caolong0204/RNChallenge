@@ -4,6 +4,7 @@ import Animated, {
   interpolate,
   useAnimatedStyle,
   useSharedValue,
+  withDelay,
   withRepeat,
   withTiming,
 } from 'react-native-reanimated';
@@ -13,21 +14,35 @@ interface ThreeDot {
   size?: number;
 }
 const ThreeDots = ({dotColor = 'black', size = 7}: ThreeDot) => {
-  const valueAnimated = useSharedValue(0);
+  const valueAnimatedFirst = useSharedValue(0);
+  const valueAnimatedSecond = useSharedValue(0);
+  const valueAnimatedThird = useSharedValue(0);
   React.useEffect(() => {
-    valueAnimated.value = withRepeat(withTiming(10, {duration: 300}), -1, true);
+    valueAnimatedFirst.value = withRepeat(
+      withTiming(10, {duration: 350}),
+      -1,
+      true,
+    );
+    valueAnimatedSecond.value = withDelay(
+      150,
+      withRepeat(withTiming(10, {duration: 350}), -1, true),
+    );
+    valueAnimatedThird.value = withDelay(
+      300,
+      withRepeat(withTiming(10, {duration: 350}), -1, true),
+    );
   });
   const styleAnimatedFirst = useAnimatedStyle(() => {
-    const translateY = interpolate(valueAnimated.value, [0, 10], [1.6, 1]);
-    return {transform: [{scale: translateY}]};
+    const translateY = interpolate(valueAnimatedFirst.value, [0, 10], [1, -6]);
+    return {transform: [{translateY: translateY}]};
   }, []);
   const styleAnimatedSecond = useAnimatedStyle(() => {
-    const translateY = interpolate(valueAnimated.value, [0, 10], [1, 1.6]);
-    return {transform: [{scale: translateY}]};
+    const translateY = interpolate(valueAnimatedSecond.value, [0, 10], [1, -6]);
+    return {transform: [{translateY: translateY}]};
   }, []);
   const styleAnimatedThird = useAnimatedStyle(() => {
-    const translateY = interpolate(valueAnimated.value, [0, 5], [1.6, 1]);
-    return {transform: [{scale: translateY}]};
+    const translateY = interpolate(valueAnimatedThird.value, [0, 10], [1, -6]);
+    return {transform: [{translateY: translateY}]};
   }, []);
   const styleDot = {
     backgroundColor: dotColor,

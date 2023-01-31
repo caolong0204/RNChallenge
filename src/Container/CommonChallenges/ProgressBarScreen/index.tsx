@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
-import Box from '../../Components/Box';
-import ProgressBar, {ProgressBarRef} from '../../Components/ProgressBar';
-import Screen from '../../Components/Screen';
+import {Screen} from 'react-native-screens';
+import Box from '../../../Components/Box';
+import ProgressBar, {ProgressBarRef} from '../../../Components/ProgressBar';
 
 const ProgressBarScreen = () => {
   const MAX_VALUE = 100;
@@ -15,27 +15,29 @@ const ProgressBarScreen = () => {
   };
 
   return (
-    <Screen>
-      <View style={styles.container}>
-        <Box />
-        <ProgressBar currentValue={0} maxValue={MAX_VALUE} ref={ProgressRef} />
-        <View style={styles.controller}>
-          <TouchableOpacity style={styles.button} onPress={handleAddValue}>
-            <Text>Add</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={handleSubtractValue}>
-            <Text>Sub</Text>
-          </TouchableOpacity>
-        </View>
+    <View style={styles.container}>
+      <Box />
+      <ProgressBar currentValue={0} maxValue={MAX_VALUE} ref={ProgressRef} />
+      <View style={styles.controller}>
+        <TouchableOpacity style={styles.button} onPress={handleAddValue}>
+          <Text>Add</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleSubtractValue}>
+          <Text>Sub</Text>
+        </TouchableOpacity>
       </View>
-    </Screen>
+    </View>
   );
 };
 
 export default ProgressBarScreen;
 
 const styles = StyleSheet.create({
-  container: {justifyContent: 'center', flex: 1, paddingHorizontal: 20},
+  container: {
+    flex: 1,
+    paddingHorizontal: 20,
+    justifyContent: 'center',
+  },
   controller: {
     flexDirection: 'row',
     justifyContent: 'center',
