@@ -21,6 +21,7 @@ const LIST_FEATURE = [
   {id: APP_SCREEN.REACT_TO_MESSAGE, title: 'React Message'},
   {id: APP_SCREEN.LOADING_SCREEN, title: 'Loading Screen'},
   {id: APP_SCREEN.MOMO_SCREEN, title: 'MOMO Header'},
+  {id: APP_SCREEN.VIEW_3D, title: 'View 3D'},
 ];
 const GeneralScreen = () => {
   const handlePress = (screenName: any) => {
