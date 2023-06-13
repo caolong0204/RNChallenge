@@ -10,10 +10,9 @@ const TimeLine = () => {
     const barWidth = Math.floor((screenWidth - totalBars) / totalBars);
     const barHeight = 50;
     const bars = [];
-
+    const space = screenWidth - barWidth * 48 - 48;
     for (let i = 0; i < totalBars; i++) {
-      console.log('=====i', i);
-      const x = i * (barWidth + 1);
+      const x = space / 2 + i * (barWidth + 1);
       bars.push(
         <Rect
           key={i}
@@ -28,7 +27,12 @@ const TimeLine = () => {
         const value = i === 47 ? 0 : i / 2;
         const positionX = getOffSetAndValue(i, barWidth, x);
         bars.push(
-          <Text fill="#000" fontSize="11" x={positionX} y={60}>
+          <Text
+            key={i + 'txt'}
+            fill="#000"
+            fontSize="11"
+            x={positionX}
+            y={barHeight + 10}>
             {value}
           </Text>,
         );
