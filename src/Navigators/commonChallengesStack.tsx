@@ -5,7 +5,7 @@ import LoadingScreen from '../Container/CommonChallenges/LoadingScreen';
 import MomoScreen from '../Container/CommonChallenges/MomoScreen';
 import ProgressBarScreen from '../Container/CommonChallenges/ProgressBarScreen';
 import ReactToMessage from '../Container/CommonChallenges/ReactToMessage';
-import View3D from '../Container/CommonChallenges/View3D';
+import TimeLine from '../Container/CommonChallenges/Timeline';
 import {APP_SCREEN, RootNativeStackParamList} from './screenTypes';
 
 const Stack = createNativeStackNavigator<RootNativeStackParamList>();
@@ -34,7 +34,7 @@ const CommonChallengesStack = () => {
         component={LoadingScreen}
       />
       <Stack.Screen name={APP_SCREEN.MOMO_SCREEN} component={MomoScreen} />
-      <Stack.Screen name={APP_SCREEN.VIEW_3D} component={View3D} />
+      <Stack.Screen name={APP_SCREEN.TIME_LINE} component={TimeLine} />
     </Stack.Navigator>
   );
 };

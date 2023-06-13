@@ -1,20 +1,17 @@
 import * as React from 'react';
 import {Text, StyleSheet, View} from 'react-native';
 
-import ThreeDots from '../../../Components/ThreeDot';
-
-const View3D = () => {
+const TimeLine = () => {
   return (
     <View style={styles.container}>
       <View style={styles.subView}>
-        <Text>3D</Text>
-        <ThreeDots />
+        <Text>TimeLine</Text>
       </View>
     </View>
   );
 };
 
-export default View3D;
+export default TimeLine;
 
 const styles = StyleSheet.create({
   container: {justifyContent: 'center', flex: 1, paddingHorizontal: 20},
