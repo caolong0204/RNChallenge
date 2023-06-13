@@ -12,6 +12,7 @@ export enum APP_SCREEN {
   LOADING_SCREEN = 'LOADING_SCREEN',
   MOMO_SCREEN = 'MOMO_SCREEN',
   TIME_LINE = 'TIME_LINE',
+  CAR_TIME = 'CAR_TIME',
   GENERAL_SCREEN = 'GENERAL_UNAUTH_SCREEN',
 }
 export type UnAuthorizeParamsList = {
@@ -21,6 +22,7 @@ export type UnAuthorizeParamsList = {
   [APP_SCREEN.LOADING_SCREEN]: undefined;
   [APP_SCREEN.MOMO_SCREEN]: undefined;
   [APP_SCREEN.TIME_LINE]: undefined;
+  [APP_SCREEN.CAR_TIME]: undefined;
 };
 export type AuthorizeParamsList = {
   //3 Màn chính trong bottom Tab
