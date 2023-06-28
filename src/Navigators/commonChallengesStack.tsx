@@ -7,6 +7,7 @@ import ProgressBarScreen from '../Container/CommonChallenges/ProgressBarScreen';
 import ReactToMessage from '../Container/CommonChallenges/ReactToMessage';
 import TimeLine from '../Container/CommonChallenges/Timeline';
 import {APP_SCREEN, RootNativeStackParamList} from './screenTypes';
+import {CarsWithTimeList} from '../Container/CommonChallenges/CarWithTime';
 
 const Stack = createNativeStackNavigator<RootNativeStackParamList>();
 const CommonChallengesStack = () => {
@@ -35,6 +36,7 @@ const CommonChallengesStack = () => {
       />
       <Stack.Screen name={APP_SCREEN.MOMO_SCREEN} component={MomoScreen} />
       <Stack.Screen name={APP_SCREEN.TIME_LINE} component={TimeLine} />
+      <Stack.Screen name={APP_SCREEN.CAR_TIME} component={CarsWithTimeList} />
     </Stack.Navigator>
   );
 };
