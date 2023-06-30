@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {navigate} from '../../../Navigators/navigationService';
-import {APP_SCREEN} from '../../../Navigators/screenTypes';
+import {navigate} from '../Navigators/navigationService';
+import {APP_SCREEN} from '../Navigators/screenTypes';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,6 +23,7 @@ const LIST_FEATURE = [
   {id: APP_SCREEN.MOMO_SCREEN, title: 'MOMO Header'},
   {id: APP_SCREEN.TIME_LINE, title: 'TimeLine'},
   {id: APP_SCREEN.CAR_TIME, title: 'CarTime'},
+  {id: APP_SCREEN.MAP_SCREEN, title: 'MapScreen'},
 ];
 const GeneralScreen = () => {
   const handlePress = (screenName: any) => {

@@ -1,15 +1,15 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-// import { initializeMMKVFlipper } from 'react-native-mmkv-flipper-plugin';
-// import { AppStorage } from 'utils/storage';
+
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import AppRoutes from './Navigators/appRoutes';
-// if (__DEV__) {
-//   initializeMMKVFlipper({ default: AppStorage });
-// }
+
+import {enableLatestRenderer} from 'react-native-maps';
 
 const App = () => {
+  enableLatestRenderer();
+
   return (
     <SafeAreaProvider>
       <GestureHandlerRootView style={styles.root}>

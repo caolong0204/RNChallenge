@@ -1,6 +1,6 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
-import GeneralScreen from '../Container/CommonChallenges/GeneralScreen';
+import GeneralScreen from '../Container';
 import LoadingScreen from '../Container/CommonChallenges/LoadingScreen';
 import MomoScreen from '../Container/CommonChallenges/MomoScreen';
 import ProgressBarScreen from '../Container/CommonChallenges/ProgressBarScreen';
@@ -8,6 +8,7 @@ import ReactToMessage from '../Container/CommonChallenges/ReactToMessage';
 import TimeLine from '../Container/CommonChallenges/Timeline';
 import {APP_SCREEN, RootNativeStackParamList} from './screenTypes';
 import {CarsWithTimeList} from '../Container/CommonChallenges/CarWithTime';
+import MapScreen from '../Container/CommonChallenges/MapScreen';
 
 const Stack = createNativeStackNavigator<RootNativeStackParamList>();
 const CommonChallengesStack = () => {
@@ -37,6 +38,7 @@ const CommonChallengesStack = () => {
       <Stack.Screen name={APP_SCREEN.MOMO_SCREEN} component={MomoScreen} />
       <Stack.Screen name={APP_SCREEN.TIME_LINE} component={TimeLine} />
       <Stack.Screen name={APP_SCREEN.CAR_TIME} component={CarsWithTimeList} />
+      <Stack.Screen name={APP_SCREEN.MAP_SCREEN} component={MapScreen} />
     </Stack.Navigator>
   );
 };
