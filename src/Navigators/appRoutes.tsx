@@ -11,7 +11,7 @@ const AppRoutes = () => {
     <NavigationContainer ref={navigationRef}>
       <>
         <StatusBar translucent backgroundColor={'transparent'} />
-        {!isTabStack ? <BottomTabStack /> : <CommonChallengesStack />}
+        {isTabStack ? <BottomTabStack /> : <CommonChallengesStack />}
       </>
     </NavigationContainer>
   );
