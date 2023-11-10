@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
-import {Screen} from 'react-native-screens';
 import Box from '../../../Components/Box';
 import ProgressBar, {ProgressBarRef} from '../../../Components/ProgressBar';
 
