@@ -14,6 +14,7 @@ export enum APP_SCREEN {
   TIME_LINE = 'TIME_LINE',
   CAR_TIME = 'CAR_TIME',
   GENERAL_SCREEN = 'GENERAL_UNAUTH_SCREEN',
+  NEW_CHALLENGE = 'NEW_CHALLENGE',
 }
 export type UnAuthorizeParamsList = {
   [APP_SCREEN.REACT_TO_MESSAGE]: undefined;
@@ -23,6 +24,7 @@ export type UnAuthorizeParamsList = {
   [APP_SCREEN.MOMO_SCREEN]: undefined;
   [APP_SCREEN.TIME_LINE]: undefined;
   [APP_SCREEN.CAR_TIME]: undefined;
+  [APP_SCREEN.NEW_CHALLENGE]: undefined;
 };
 export type AuthorizeParamsList = {
   //3 Màn chính trong bottom Tab
