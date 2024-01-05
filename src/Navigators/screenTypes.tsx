@@ -1,4 +1,5 @@
-import {NativeStackScreenProps as RNStackScreenProps} from '@react-navigation/native-stack';
+// import {NativeStackScreenProps as RNStackScreenProps} from '@react-navigation/native-stack';
+import {StackNavigationProp as RNStackScreenProps} from '@react-navigation/stack';
 
 export enum APP_SCREEN {
   UN_AUTHORIZE = 'UN_AUTHORIZE',
@@ -15,6 +16,10 @@ export enum APP_SCREEN {
   CAR_TIME = 'CAR_TIME',
   GENERAL_SCREEN = 'GENERAL_UNAUTH_SCREEN',
   NEW_CHALLENGE = 'NEW_CHALLENGE',
+  CHALLENGE2 = 'CHALLENGE2',
+  CHALLENGE1 = 'CHALLENGE1',
+
+  GENERATE2SCREEN = 'GENERATE2SCREEN',
 }
 export type UnAuthorizeParamsList = {
   [APP_SCREEN.REACT_TO_MESSAGE]: undefined;
@@ -25,6 +30,9 @@ export type UnAuthorizeParamsList = {
   [APP_SCREEN.TIME_LINE]: undefined;
   [APP_SCREEN.CAR_TIME]: undefined;
   [APP_SCREEN.NEW_CHALLENGE]: undefined;
+  [APP_SCREEN.CHALLENGE2]: undefined;
+  [APP_SCREEN.GENERATE2SCREEN]: undefined;
+  [APP_SCREEN.CHALLENGE1]: undefined;
 };
 export type AuthorizeParamsList = {
   //3 Màn chính trong bottom Tab

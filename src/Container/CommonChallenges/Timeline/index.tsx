@@ -1,6 +1,8 @@
 import * as React from 'react';
-import {Dimensions, StyleSheet, View} from 'react-native';
+import {Button, Dimensions, StyleSheet, View} from 'react-native';
 import Svg, {Rect, Text} from 'react-native-svg';
+import {goBack, navigate} from '../../../Navigators/navigationService';
+import {APP_SCREEN} from '../../../Navigators/screenTypes';
 
 const TimeLine = () => {
   const screenWidth = Dimensions.get('window').width;
@@ -41,12 +43,29 @@ const TimeLine = () => {
 
     return bars;
   };
-
   return (
     <View style={[StyleSheet.absoluteFill]}>
+      <Button
+        title="Back"
+        onPress={() => {
+          goBack();
+        }}
+      />
+      <Text>C</Text>
       <Svg height={100} width={screenWidth}>
         {renderBars()}
       </Svg>
+      <Button
+        title="go to D"
+        onPress={() => {
+          // pushScreen(APP_SCREEN.CHALLENGE2, {screen: APP_SCREEN.TIME_LINE});
+          navigate(APP_SCREEN.CHALLENGE1, {
+            screen: APP_SCREEN.REACT_TO_MESSAGE,
+          });
+
+          // navigate(APP_SCREEN.MOMO_SCREEN);
+        }}
+      />
     </View>
   );
 };

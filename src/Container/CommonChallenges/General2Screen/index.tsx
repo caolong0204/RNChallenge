@@ -17,14 +17,12 @@ const styles = StyleSheet.create({
 });
 
 const LIST_FEATURE = [
-  {id: APP_SCREEN.PROGRESS_BAR, title: 'Progress Bar'},
-  {id: APP_SCREEN.REACT_TO_MESSAGE, title: 'React Message'},
-  {id: APP_SCREEN.LOADING_SCREEN, title: 'Loading Screen'},
-
-  {id: APP_SCREEN.CHALLENGE2, title: 'CHALLENGE2'},
-  {id: APP_SCREEN.MOMO_SCREEN, title: 'Momo'},
+  {id: APP_SCREEN.MOMO_SCREEN, title: 'MoMo Screen'},
+  {id: APP_SCREEN.TIME_LINE, title: 'TimeLine'},
+  {id: APP_SCREEN.CAR_TIME, title: 'CarTime'},
+  {id: APP_SCREEN.NEW_CHALLENGE, title: 'New Challenge'},
 ];
-const GeneralScreen = () => {
+const General2Screen = () => {
   const handlePress = (screenName: any) => {
     navigate(screenName);
   };
@@ -47,4 +45,4 @@ const GeneralScreen = () => {
     </View>
   );
 };
-export default GeneralScreen;
+export default General2Screen;

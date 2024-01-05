@@ -6,6 +6,7 @@ import {
   ScrollView,
   SafeAreaView,
   Image,
+  Button,
 } from 'react-native';
 
 import IonIcon from 'react-native-vector-icons/Ionicons';
@@ -18,6 +19,8 @@ import Animated, {
 } from 'react-native-reanimated';
 import {ImageAssets} from '../../../Assets/ImageAssets';
 import {SCREEN_HEIGHT} from '../../../Common/constant';
+import {navigate} from '../../../Navigators/navigationService';
+import {APP_SCREEN} from '../../../Navigators/screenTypes';
 const MomoScreen = () => {
   const animatedValue = useSharedValue(0);
   const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
@@ -110,7 +113,6 @@ const MomoScreen = () => {
       transform: [{translateY: translateY}, {translateX: translateX}],
     };
   });
-
   return (
     <View style={styles.container}>
       <StatusBar barStyle={'light-content'} />
@@ -203,6 +205,15 @@ const MomoScreen = () => {
         }}
         scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}>
+        <Button
+          title="go to B"
+          onPress={() => {
+            // pushScreen(APP_SCREEN.CHALLENGE2, {screen: APP_SCREEN.TIME_LINE});
+            // replaceScreen(APP_SCREEN.CHALLENGE2, {screen: APP_SCREEN.TIME_LINE});
+
+            navigate(APP_SCREEN.REACT_TO_MESSAGE);
+          }}
+        />
         <View style={styles.paddingForHeader} />
         <View style={styles.scrollViewContent} />
       </ScrollView>

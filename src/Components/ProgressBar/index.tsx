@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
-import {Ref, useImperativeHandle} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {Ref, useImperativeHandle, useState} from 'react';
+import {View, StyleSheet, InteractionManager, Text} from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -34,6 +34,7 @@ const ProgressBar = (
   ref: Ref<ProgressBarRef>,
 ) => {
   const processValue = useSharedValue(currentValue);
+  const [flag, setFlag] = useState(false);
   const animatedStyles = useAnimatedStyle(() => {
     const progress =
       typeof width === 'number'
@@ -77,12 +78,21 @@ const ProgressBar = (
       height,
     };
   }, []);
-
+  console.log('=======renderA');
+  React.useEffect(() => {
+    InteractionManager.runAfterInteractions(() => {
+      console.log('========runAfterInteractions');
+      setFlag(true);
+    });
+    console.log('============useEffect');
+  }, []);
+  console.log('=======renderB');
   return (
     <View style={[styles.container, styleMaxValue]}>
       <Animated.View
         style={[styles.progress, styleProcessValue, animatedStyles]}
       />
+      {flag && <Text>Hello</Text>}
     </View>
   );
 };
@@ -92,6 +102,7 @@ export default React.forwardRef(ProgressBar);
 const styles = StyleSheet.create({
   container: {
     borderRadius: 2,
+    height: 100,
   },
   progress: {
     borderRadius: 2,

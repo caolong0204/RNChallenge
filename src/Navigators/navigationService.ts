@@ -1,10 +1,15 @@
-import {createRef} from 'react';
-
-import {CommonActions, NavigationContainerRef} from '@react-navigation/native';
+import {
+  CommonActions,
+  NavigationContainerRef,
+  StackActions,
+  createNavigationContainerRef,
+} from '@react-navigation/native';
 import {RootNativeStackParamList} from './screenTypes';
 
 export const navigationRef =
-  createRef<NavigationContainerRef<RootNativeStackParamList>>();
+  createNavigationContainerRef<
+    NavigationContainerRef<RootNativeStackParamList>
+  >();
 
 export function navigate<RouteName extends keyof RootNativeStackParamList>(
   ...arg: undefined extends RootNativeStackParamList[RouteName]
@@ -22,9 +27,32 @@ export function navigate<RouteName extends keyof RootNativeStackParamList>(
 export function goBack() {
   navigationRef.current?.dispatch(CommonActions.goBack);
 }
+export function pushScreen<RouteName extends keyof RootNativeStackParamList>(
+  ...arg: undefined extends RootNativeStackParamList[RouteName]
+    ?
+        | [screen: RouteName]
+        | [screen: RouteName, params?: RootNativeStackParamList[RouteName]]
+    : [screen: RouteName, params: RootNativeStackParamList[RouteName]]
+) {
+  navigationRef.current?.dispatch(
+    StackActions.push(arg[0] as any, arg.length > 1 ? arg[1] : undefined),
+  );
+}
+
+export function replaceScreen<RouteName extends keyof RootNativeStackParamList>(
+  ...arg: undefined extends RootNativeStackParamList[RouteName]
+    ?
+        | [screen: RouteName]
+        | [screen: RouteName, params?: RootNativeStackParamList[RouteName]]
+    : [screen: RouteName, params: RootNativeStackParamList[RouteName]]
+) {
+  navigationRef?.dispatch(
+    StackActions.replace(arg[0] as any, arg.length > 1 ? arg[1] : undefined),
+  );
+}
 
 export function navigateAndSimpleReset(name: string, index = 0) {
-  navigationRef.current?.dispatch(
+  navigationRef?.dispatch(
     CommonActions.reset({
       index,
       routes: [{name}],
@@ -32,5 +60,9 @@ export function navigateAndSimpleReset(name: string, index = 0) {
   );
 }
 export function getCurrentRoute() {
-  return navigationRef.current?.getCurrentRoute()?.name;
+  return navigationRef?.getCurrentRoute()?.name;
+}
+
+export function getNavState() {
+  return navigationRef?.getState();
 }

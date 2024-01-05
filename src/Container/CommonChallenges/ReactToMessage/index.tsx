@@ -1,5 +1,6 @@
 import React, {useCallback, useRef, useState} from 'react';
 import {
+  Button,
   Image,
   Platform,
   SafeAreaView,
@@ -17,13 +18,14 @@ import Animated, {
 import {ImageAssets} from '../../../Assets/ImageAssets';
 import {SCREEN_WIDTH} from '../../../Common/constant';
 import AnimatedHeart from './animatedHeaert';
+import {APP_SCREEN} from '../../../Navigators/screenTypes';
+import {goBack, navigate} from '../../../Navigators/navigationService';
 
 const ReactToMessage = () => {
   const [heartCount, setHeartCount] = useState(0);
   const [hearts, setHearts] = useState<{id: string}[]>([]);
   const heartTimeout = useRef<ReturnType<typeof setTimeout>>();
   const countAnimatedValue = useSharedValue(0);
-
   const handleCompleteAnimation = useCallback((id: string) => {
     setHearts(oldHearts => {
       return oldHearts.filter(heart => heart.id !== id);
@@ -53,6 +55,8 @@ const ReactToMessage = () => {
   });
   return (
     <SafeAreaView style={styles.container}>
+      <Button title={'back'} onPress={goBack} />
+      <Text>B</Text>
       <View style={styles.messageContainer}>
         <Image style={styles.messageAvatar} source={ImageAssets.userAvatar} />
         <View style={styles.messageContent}>
@@ -87,6 +91,15 @@ const ReactToMessage = () => {
           />
         ))}
       </View>
+      <Button
+        title="go to C"
+        onPress={() => {
+          // pushScreen(APP_SCREEN.CHALLENGE2, {screen: APP_SCREEN.TIME_LINE});
+          // replaceScreen(APP_SCREEN.CHALLENGE2, {screen: APP_SCREEN.TIME_LINE});
+
+          navigate(APP_SCREEN.CHALLENGE2, {screen: APP_SCREEN.TIME_LINE});
+        }}
+      />
     </SafeAreaView>
   );
 };
