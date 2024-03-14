@@ -6,11 +6,12 @@ import {Callout, MapMarker, Marker} from 'react-native-maps';
 interface MarkerCustomProps {
   lat: number;
   long: number;
-  onPress: (event: string) => void;
+  onPress?: (event: string) => void;
+  value?: string;
 }
 
 const MarkerCustom = (props: MarkerCustomProps) => {
-  const {lat, long, onPress} = props;
+  const {lat, long, onPress, value} = props;
   const markerRef = useRef<MapMarker>(null);
   const handlePress = () => {
     onPress?.('Callout::onPress');
@@ -26,11 +27,9 @@ const MarkerCustom = (props: MarkerCustomProps) => {
       }}
       ref={markerRef}
       calloutAnchor={{x: 0.5, y: 1}}>
-      <Callout tooltip={true} style={styles.callout} onPress={handlePress}>
-        <View>
-          <Text>Well hello there...</Text>
-        </View>
-      </Callout>
+      <View style={{backgroundColor: '#fff', padding: 5}}>
+        <Text>{value}</Text>
+      </View>
     </Marker>
   );
 };
